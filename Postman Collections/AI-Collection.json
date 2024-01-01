@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "750ac4aa-07ef-4a41-8250-93fa98c0ffac",
+		"name": "AI Text Summarizer App",
+		"description": "This collection is a complementary tool to Postman Student Program's newest project based learning course using Hugging Face's AI Text Summarizing API.\n\nLearn how to use APIs and create a full stack project with Postman by following the link below.\n\nAlso don't forget to sign up for Postman Student Expert Program for more opportunities to learn about APIs and access to an excluse Discord community and invites to events!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "frontend",
+			"item": [
+				{
+					"name": "retrieve summary",
+					"id": "0628fdf4-82c2-448e-bcfb-e428c40d0071",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text_to_summarize\": \"{{text}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/summarize"
+					},
+					"response": [
+						{
+							"id": "6860898b-3a7f-4ef9-a571-49e51f32a95c",
+							"name": "retrieve summary ex",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text_to_summarize\": \"{{text}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/summarize"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 09 Aug 2023 18:38:54 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"110-GCl345Hk2MZ7H62D6RCazLCUFZE\""
+								},
+								{
+									"key": "Expect-Ct",
+									"value": "max-age=2592000, report-uri=\"https://sentry.repl.it/api/10/security/?sentry_key=615192fd532445bfbbbe966cd7131791\""
+								},
+								{
+									"key": "Replit-Cluster",
+									"value": "global"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=6487894; includeSubDomains"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Amelia, a curious astronomer, spotted a peculiar comet through her telescope. Determined to investigate, she built a spaceship. On her journey, she encountered cosmic wonders, yet the comet remained elusive. Finally, at the edge of the universe, she understood its secret."
+						}
+					]
+				}
+			],
+			"id": "ebede572-a742-4c2d-a772-469c3b1490b9"
+		},
+		{
+			"name": "backend",
+			"item": [
+				{
+					"name": "hugging face summary",
+					"id": "02dc716a-d038-4026-9cd2-188c9fac895c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"inputs\": \"{{text}}\",\n   \"parameters\": {\n      \"max_length\": 100,\n      \"min_length\": 30\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+					},
+					"response": []
+				}
+			],
+			"id": "6871b436-c992-4ceb-b32f-976984ab17f8"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{access_token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "338814f0-f957-4162-9cf4-c273251af60f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "24ccc571-cffd-4e4a-ad81-5ccf525b36d2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "text",
+			"value": "Amelia, a curious astronomer, spotted a peculiar comet through her telescope. It emitted a mesmerizing glow and seemed to change course. Determined to investigate, she built a spaceship. On her journey, she encountered cosmic wonders, yet the comet remained elusive. Finally, at the edge of the universe, she understood its secret: the comet was a celestial guide, leading her to discover the boundless wonders within herself. Grateful for the voyage, Amelia returned, sharing her newfound wisdom with the world, inspiring others to explore both the cosmos and the depths of their souls."
+		},
+		{
+			"key": "baseUrl",
+			"value": "ai-text-summarizer-app.agbooladaramola.repl.co/"
+		},
+		{
+			"key": "access_token",
+			"value": "PASTE YOUR HUGGING FACE ACCESS TOKEN IN CURRENT VALUE COLUMN ONLY"
+		}
+	]
+}
